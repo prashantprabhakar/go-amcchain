@@ -19,10 +19,10 @@ package core
 import (
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/mclock"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/log"
+	"github.com/prashantprabhakar/go-amcchain/common"
+	"github.com/prashantprabhakar/go-amcchain/common/mclock"
+	"github.com/prashantprabhakar/go-amcchain/core/types"
+	"github.com/prashantprabhakar/go-amcchain/log"
 )
 
 // insertStats tracks and reports on block insertion.

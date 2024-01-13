@@ -17,10 +17,10 @@
 package eth
 
 import (
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/forkid"
-	"github.com/ethereum/go-ethereum/p2p/enode"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/prashantprabhakar/go-amcchain/core"
+	"github.com/prashantprabhakar/go-amcchain/core/forkid"
+	"github.com/prashantprabhakar/go-amcchain/p2p/enode"
+	"github.com/prashantprabhakar/go-amcchain/rlp"
 )
 
 // enrEntry is the ENR entry which advertises `eth` protocol on the discovery.

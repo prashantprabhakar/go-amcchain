@@ -22,27 +22,27 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/internal/ethapi"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/rpc"
-	"github.com/ethereum/go-ethereum/trie"
+	"github.com/prashantprabhakar/go-amcchain/common"
+	"github.com/prashantprabhakar/go-amcchain/common/hexutil"
+	"github.com/prashantprabhakar/go-amcchain/core/rawdb"
+	"github.com/prashantprabhakar/go-amcchain/core/state"
+	"github.com/prashantprabhakar/go-amcchain/core/types"
+	"github.com/prashantprabhakar/go-amcchain/crypto"
+	"github.com/prashantprabhakar/go-amcchain/internal/ethapi"
+	"github.com/prashantprabhakar/go-amcchain/log"
+	"github.com/prashantprabhakar/go-amcchain/rlp"
+	"github.com/prashantprabhakar/go-amcchain/rpc"
+	"github.com/prashantprabhakar/go-amcchain/trie"
 )
 
-// DebugAPI is the collection of Ethereum full node APIs for debugging the
+// DebugAPI is the collection of AmcChain full node APIs for debugging the
 // protocol.
 type DebugAPI struct {
-	eth *Ethereum
+	eth *AmcChain
 }
 
 // NewDebugAPI creates a new DebugAPI instance.
-func NewDebugAPI(eth *Ethereum) *DebugAPI {
+func NewDebugAPI(eth *AmcChain) *DebugAPI {
 	return &DebugAPI{eth: eth}
 }
 

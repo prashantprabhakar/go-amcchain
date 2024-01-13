@@ -25,19 +25,19 @@ import (
 	"math/big"
 	"strings"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/common/math"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/trie"
-	"github.com/ethereum/go-ethereum/trie/triedb/pathdb"
+	"github.com/prashantprabhakar/go-amcchain/common"
+	"github.com/prashantprabhakar/go-amcchain/common/hexutil"
+	"github.com/prashantprabhakar/go-amcchain/common/math"
+	"github.com/prashantprabhakar/go-amcchain/core/rawdb"
+	"github.com/prashantprabhakar/go-amcchain/core/state"
+	"github.com/prashantprabhakar/go-amcchain/core/types"
+	"github.com/prashantprabhakar/go-amcchain/crypto"
+	"github.com/prashantprabhakar/go-amcchain/ethdb"
+	"github.com/prashantprabhakar/go-amcchain/log"
+	"github.com/prashantprabhakar/go-amcchain/params"
+	"github.com/prashantprabhakar/go-amcchain/rlp"
+	"github.com/prashantprabhakar/go-amcchain/trie"
+	"github.com/prashantprabhakar/go-amcchain/trie/triedb/pathdb"
 )
 
 //go:generate go run github.com/fjl/gencodec -type Genesis -field-override genesisSpecMarshaling -out gen_genesis.go
@@ -530,7 +530,7 @@ func (g *Genesis) MustCommit(db ethdb.Database, triedb *trie.Database) *types.Bl
 	return block
 }
 
-// DefaultGenesisBlock returns the Ethereum main net genesis block.
+// DefaultGenesisBlock returns the AmcChain main net genesis block.
 func DefaultGenesisBlock() *Genesis {
 	return &Genesis{
 		Config:     params.MainnetChainConfig,

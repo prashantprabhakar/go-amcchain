@@ -29,20 +29,20 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/consensus/misc/eip1559"
-	"github.com/ethereum/go-ethereum/consensus/misc/eip4844"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/txpool"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/event"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/metrics"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rlp"
 	"github.com/holiman/billy"
 	"github.com/holiman/uint256"
+	"github.com/prashantprabhakar/go-amcchain/common"
+	"github.com/prashantprabhakar/go-amcchain/consensus/misc/eip1559"
+	"github.com/prashantprabhakar/go-amcchain/consensus/misc/eip4844"
+	"github.com/prashantprabhakar/go-amcchain/core"
+	"github.com/prashantprabhakar/go-amcchain/core/state"
+	"github.com/prashantprabhakar/go-amcchain/core/txpool"
+	"github.com/prashantprabhakar/go-amcchain/core/types"
+	"github.com/prashantprabhakar/go-amcchain/event"
+	"github.com/prashantprabhakar/go-amcchain/log"
+	"github.com/prashantprabhakar/go-amcchain/metrics"
+	"github.com/prashantprabhakar/go-amcchain/params"
+	"github.com/prashantprabhakar/go-amcchain/rlp"
 )
 
 const (
@@ -152,7 +152,7 @@ func newBlobTxMeta(id uint64, size uint32, tx *types.Transaction) *blobTxMeta {
 //     artificial churn (i.e. pool wars).
 //
 //   - Purpose of blobs are layer-2s. Layer-2s are meant to use blob transactions to
-//     commit to their own current state, which is independent of Ethereum mainnet
+//     commit to their own current state, which is independent of AmcChain mainnet
 //     (state, txs). This means that there's no reason for blob tx cancellation or
 //     replacement, apart from a potential basefee / miner tip adjustment.
 //

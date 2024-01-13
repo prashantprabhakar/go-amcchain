@@ -20,13 +20,13 @@ import (
 	"bytes"
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/prashantprabhakar/go-amcchain/common"
+	"github.com/prashantprabhakar/go-amcchain/rlp"
 )
 
 //go:generate go run ../../rlp/rlpgen -type StateAccount -out gen_account_rlp.go
 
-// StateAccount is the Ethereum consensus representation of accounts.
+// StateAccount is the AmcChain consensus representation of accounts.
 // These objects are stored in the main account trie.
 type StateAccount struct {
 	Nonce    uint64

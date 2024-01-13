@@ -22,31 +22,31 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/accounts"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/consensus"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/bloombits"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/txpool"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/eth/gasprice"
-	"github.com/ethereum/go-ethereum/eth/tracers"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/event"
-	"github.com/ethereum/go-ethereum/miner"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rpc"
+	ethereum "github.com/prashantprabhakar/go-amcchain"
+	"github.com/prashantprabhakar/go-amcchain/accounts"
+	"github.com/prashantprabhakar/go-amcchain/common"
+	"github.com/prashantprabhakar/go-amcchain/consensus"
+	"github.com/prashantprabhakar/go-amcchain/core"
+	"github.com/prashantprabhakar/go-amcchain/core/bloombits"
+	"github.com/prashantprabhakar/go-amcchain/core/rawdb"
+	"github.com/prashantprabhakar/go-amcchain/core/state"
+	"github.com/prashantprabhakar/go-amcchain/core/txpool"
+	"github.com/prashantprabhakar/go-amcchain/core/types"
+	"github.com/prashantprabhakar/go-amcchain/core/vm"
+	"github.com/prashantprabhakar/go-amcchain/eth/gasprice"
+	"github.com/prashantprabhakar/go-amcchain/eth/tracers"
+	"github.com/prashantprabhakar/go-amcchain/ethdb"
+	"github.com/prashantprabhakar/go-amcchain/event"
+	"github.com/prashantprabhakar/go-amcchain/miner"
+	"github.com/prashantprabhakar/go-amcchain/params"
+	"github.com/prashantprabhakar/go-amcchain/rpc"
 )
 
 // EthAPIBackend implements ethapi.Backend and tracers.Backend for full nodes
 type EthAPIBackend struct {
 	extRPCEnabled       bool
 	allowUnprotectedTxs bool
-	eth                 *Ethereum
+	eth                 *AmcChain
 	gpo                 *gasprice.Oracle
 }
 

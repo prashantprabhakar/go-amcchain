@@ -24,21 +24,21 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-ethereum/beacon/engine"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/eth"
-	"github.com/ethereum/go-ethereum/eth/downloader"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/miner"
-	"github.com/ethereum/go-ethereum/node"
-	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/prashantprabhakar/go-amcchain/beacon/engine"
+	"github.com/prashantprabhakar/go-amcchain/common"
+	"github.com/prashantprabhakar/go-amcchain/common/hexutil"
+	"github.com/prashantprabhakar/go-amcchain/core/rawdb"
+	"github.com/prashantprabhakar/go-amcchain/core/types"
+	"github.com/prashantprabhakar/go-amcchain/eth"
+	"github.com/prashantprabhakar/go-amcchain/eth/downloader"
+	"github.com/prashantprabhakar/go-amcchain/log"
+	"github.com/prashantprabhakar/go-amcchain/miner"
+	"github.com/prashantprabhakar/go-amcchain/node"
+	"github.com/prashantprabhakar/go-amcchain/rpc"
 )
 
 // Register adds the engine API to the full node.
-func Register(stack *node.Node, backend *eth.Ethereum) error {
+func Register(stack *node.Node, backend *eth.AmcChain) error {
 	log.Warn("Engine API enabled", "protocol", "eth")
 	stack.RegisterAPIs([]rpc.API{
 		{
@@ -91,7 +91,7 @@ var caps = []string{
 }
 
 type ConsensusAPI struct {
-	eth *eth.Ethereum
+	eth *eth.AmcChain
 
 	remoteBlocks *headerQueue  // Cache of remote payloads received
 	localBlocks  *payloadQueue // Cache of local payloads generated
@@ -135,14 +135,14 @@ type ConsensusAPI struct {
 
 // NewConsensusAPI creates a new consensus api for the given backend.
 // The underlying blockchain needs to have a valid terminal total difficulty set.
-func NewConsensusAPI(eth *eth.Ethereum) *ConsensusAPI {
+func NewConsensusAPI(eth *eth.AmcChain) *ConsensusAPI {
 	api := newConsensusAPIWithoutHeartbeat(eth)
 	go api.heartbeat()
 	return api
 }
 
 // newConsensusAPIWithoutHeartbeat creates a new consensus api for the SimulatedBeacon Node.
-func newConsensusAPIWithoutHeartbeat(eth *eth.Ethereum) *ConsensusAPI {
+func newConsensusAPIWithoutHeartbeat(eth *eth.AmcChain) *ConsensusAPI {
 	if eth.BlockChain().Config().TerminalTotalDifficulty == nil {
 		log.Warn("Engine API started but chain not configured for merge yet")
 	}

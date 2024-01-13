@@ -22,12 +22,12 @@ import (
 	"errors"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/math"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/ethdb/memorydb"
-	"github.com/ethereum/go-ethereum/log"
+	"github.com/prashantprabhakar/go-amcchain/common"
+	"github.com/prashantprabhakar/go-amcchain/common/math"
+	"github.com/prashantprabhakar/go-amcchain/core/rawdb"
+	"github.com/prashantprabhakar/go-amcchain/ethdb"
+	"github.com/prashantprabhakar/go-amcchain/ethdb/memorydb"
+	"github.com/prashantprabhakar/go-amcchain/log"
 )
 
 const (

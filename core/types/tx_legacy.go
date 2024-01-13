@@ -20,10 +20,10 @@ import (
 	"bytes"
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/common"
+	"github.com/prashantprabhakar/go-amcchain/common"
 )
 
-// LegacyTx is the transaction data of the original Ethereum transactions.
+// LegacyTx is the transaction data of the original AmcChain transactions.
 type LegacyTx struct {
 	Nonce    uint64          // nonce of sender account
 	GasPrice *big.Int        // wei per gas

@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
-// Package tests implements execution of Ethereum JSON tests.
+// Package tests implements execution of AmcChain JSON tests.
 package tests
 
 import (
@@ -26,21 +26,21 @@ import (
 	"os"
 	"reflect"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/common/math"
-	"github.com/ethereum/go-ethereum/consensus/beacon"
-	"github.com/ethereum/go-ethereum/consensus/ethash"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/trie"
-	"github.com/ethereum/go-ethereum/trie/triedb/hashdb"
-	"github.com/ethereum/go-ethereum/trie/triedb/pathdb"
+	"github.com/prashantprabhakar/go-amcchain/common"
+	"github.com/prashantprabhakar/go-amcchain/common/hexutil"
+	"github.com/prashantprabhakar/go-amcchain/common/math"
+	"github.com/prashantprabhakar/go-amcchain/consensus/beacon"
+	"github.com/prashantprabhakar/go-amcchain/consensus/ethash"
+	"github.com/prashantprabhakar/go-amcchain/core"
+	"github.com/prashantprabhakar/go-amcchain/core/rawdb"
+	"github.com/prashantprabhakar/go-amcchain/core/state"
+	"github.com/prashantprabhakar/go-amcchain/core/types"
+	"github.com/prashantprabhakar/go-amcchain/core/vm"
+	"github.com/prashantprabhakar/go-amcchain/params"
+	"github.com/prashantprabhakar/go-amcchain/rlp"
+	"github.com/prashantprabhakar/go-amcchain/trie"
+	"github.com/prashantprabhakar/go-amcchain/trie/triedb/hashdb"
+	"github.com/prashantprabhakar/go-amcchain/trie/triedb/pathdb"
 )
 
 // A BlockTest checks handling of entire blocks.

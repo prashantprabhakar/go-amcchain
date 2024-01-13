@@ -24,11 +24,11 @@ import (
 	"regexp"
 	"sort"
 
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/eth/tracers/logger"
-	"github.com/ethereum/go-ethereum/tests"
+	"github.com/prashantprabhakar/go-amcchain/core"
+	"github.com/prashantprabhakar/go-amcchain/core/rawdb"
+	"github.com/prashantprabhakar/go-amcchain/core/vm"
+	"github.com/prashantprabhakar/go-amcchain/eth/tracers/logger"
+	"github.com/prashantprabhakar/go-amcchain/tests"
 	"github.com/urfave/cli/v2"
 )
 

@@ -30,14 +30,14 @@ import (
 	"syscall"
 
 	"github.com/dop251/goja"
-	"github.com/ethereum/go-ethereum/console/prompt"
-	"github.com/ethereum/go-ethereum/internal/jsre"
-	"github.com/ethereum/go-ethereum/internal/jsre/deps"
-	"github.com/ethereum/go-ethereum/internal/web3ext"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/rpc"
 	"github.com/mattn/go-colorable"
 	"github.com/peterh/liner"
+	"github.com/prashantprabhakar/go-amcchain/console/prompt"
+	"github.com/prashantprabhakar/go-amcchain/internal/jsre"
+	"github.com/prashantprabhakar/go-amcchain/internal/jsre/deps"
+	"github.com/prashantprabhakar/go-amcchain/internal/web3ext"
+	"github.com/prashantprabhakar/go-amcchain/log"
+	"github.com/prashantprabhakar/go-amcchain/rpc"
 )
 
 var (
@@ -58,7 +58,7 @@ const DefaultPrompt = "> "
 type Config struct {
 	DataDir  string              // Data directory to store the console history at
 	DocRoot  string              // Filesystem path from where to load JavaScript files from
-	Client   *rpc.Client         // RPC client to execute Ethereum requests through
+	Client   *rpc.Client         // RPC client to execute AmcChain requests through
 	Prompt   string              // Input prompt prefix string (defaults to DefaultPrompt)
 	Prompter prompt.UserPrompter // Input prompter to allow interactive user feedback (defaults to TerminalPrompter)
 	Printer  io.Writer           // Output writer to serialize any display strings to (defaults to os.Stdout)
@@ -69,7 +69,7 @@ type Config struct {
 // JavaScript console attached to a running node via an external or in-process RPC
 // client.
 type Console struct {
-	client   *rpc.Client         // RPC client to execute Ethereum requests through
+	client   *rpc.Client         // RPC client to execute AmcChain requests through
 	jsre     *jsre.JSRE          // JavaScript runtime environment running the interpreter
 	prompt   string              // Input prompt prefix string
 	prompter prompt.UserPrompter // Input prompter to allow interactive user feedback

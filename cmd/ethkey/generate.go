@@ -22,10 +22,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/ethereum/go-ethereum/accounts/keystore"
-	"github.com/ethereum/go-ethereum/cmd/utils"
-	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/google/uuid"
+	"github.com/prashantprabhakar/go-amcchain/accounts/keystore"
+	"github.com/prashantprabhakar/go-amcchain/cmd/utils"
+	"github.com/prashantprabhakar/go-amcchain/crypto"
 	"github.com/urfave/cli/v2"
 )
 

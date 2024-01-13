@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
-// Package graphql provides a GraphQL interface to Ethereum node data.
+// Package graphql provides a GraphQL interface to AmcChain node data.
 package graphql
 
 import (
@@ -27,17 +27,17 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/common/math"
-	"github.com/ethereum/go-ethereum/consensus/misc/eip1559"
-	"github.com/ethereum/go-ethereum/core/state"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/eth/filters"
-	"github.com/ethereum/go-ethereum/internal/ethapi"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/rpc"
+	ethereum "github.com/prashantprabhakar/go-amcchain"
+	"github.com/prashantprabhakar/go-amcchain/common"
+	"github.com/prashantprabhakar/go-amcchain/common/hexutil"
+	"github.com/prashantprabhakar/go-amcchain/common/math"
+	"github.com/prashantprabhakar/go-amcchain/consensus/misc/eip1559"
+	"github.com/prashantprabhakar/go-amcchain/core/state"
+	"github.com/prashantprabhakar/go-amcchain/core/types"
+	"github.com/prashantprabhakar/go-amcchain/eth/filters"
+	"github.com/prashantprabhakar/go-amcchain/internal/ethapi"
+	"github.com/prashantprabhakar/go-amcchain/rlp"
+	"github.com/prashantprabhakar/go-amcchain/rpc"
 )
 
 var (
@@ -78,7 +78,7 @@ func (b *Long) UnmarshalGraphQL(input interface{}) error {
 	return err
 }
 
-// Account represents an Ethereum account at a particular block.
+// Account represents an AmcChain account at a particular block.
 type Account struct {
 	r             *Resolver
 	address       common.Address
@@ -209,7 +209,7 @@ func (w *Withdrawal) Amount(ctx context.Context) hexutil.Uint64 {
 	return hexutil.Uint64(w.amount)
 }
 
-// Transaction represents an Ethereum transaction.
+// Transaction represents an AmcChain transaction.
 // backend and hash are mandatory; all others will be fetched when required.
 type Transaction struct {
 	r    *Resolver
@@ -643,7 +643,7 @@ func (t *Transaction) RawReceipt(ctx context.Context) (hexutil.Bytes, error) {
 
 type BlockType int
 
-// Block represents an Ethereum block.
+// Block represents an AmcChain block.
 // backend, and numberOrHash are mandatory. All other fields are lazily fetched
 // when required.
 type Block struct {
@@ -1162,8 +1162,8 @@ func (b *Block) Account(ctx context.Context, args struct {
 // CallData encapsulates arguments to `call` or `estimateGas`.
 // All arguments are optional.
 type CallData struct {
-	From                 *common.Address // The Ethereum address the call is from.
-	To                   *common.Address // The Ethereum address the call is to.
+	From                 *common.Address // The AmcChain address the call is from.
+	To                   *common.Address // The AmcChain address the call is to.
 	Gas                  *Long           // The amount of gas provided for the call.
 	GasPrice             *hexutil.Big    // The price of each unit of gas, in wei.
 	MaxFeePerGas         *hexutil.Big    // The max price of each unit of gas, in wei (1559).

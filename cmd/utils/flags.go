@@ -34,45 +34,45 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ethereum/go-ethereum/accounts"
-	"github.com/ethereum/go-ethereum/accounts/keystore"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/fdlimit"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/txpool/legacypool"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/crypto/kzg4844"
-	"github.com/ethereum/go-ethereum/eth"
-	"github.com/ethereum/go-ethereum/eth/catalyst"
-	"github.com/ethereum/go-ethereum/eth/downloader"
-	"github.com/ethereum/go-ethereum/eth/ethconfig"
-	"github.com/ethereum/go-ethereum/eth/filters"
-	"github.com/ethereum/go-ethereum/eth/gasprice"
-	"github.com/ethereum/go-ethereum/eth/tracers"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/ethdb/remotedb"
-	"github.com/ethereum/go-ethereum/ethstats"
-	"github.com/ethereum/go-ethereum/graphql"
-	"github.com/ethereum/go-ethereum/internal/ethapi"
-	"github.com/ethereum/go-ethereum/internal/flags"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/metrics"
-	"github.com/ethereum/go-ethereum/metrics/exp"
-	"github.com/ethereum/go-ethereum/metrics/influxdb"
-	"github.com/ethereum/go-ethereum/miner"
-	"github.com/ethereum/go-ethereum/node"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/p2p/enode"
-	"github.com/ethereum/go-ethereum/p2p/nat"
-	"github.com/ethereum/go-ethereum/p2p/netutil"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rpc"
-	"github.com/ethereum/go-ethereum/trie"
-	"github.com/ethereum/go-ethereum/trie/triedb/hashdb"
-	"github.com/ethereum/go-ethereum/trie/triedb/pathdb"
 	pcsclite "github.com/gballet/go-libpcsclite"
+	"github.com/prashantprabhakar/go-amcchain/accounts"
+	"github.com/prashantprabhakar/go-amcchain/accounts/keystore"
+	"github.com/prashantprabhakar/go-amcchain/common"
+	"github.com/prashantprabhakar/go-amcchain/common/fdlimit"
+	"github.com/prashantprabhakar/go-amcchain/core"
+	"github.com/prashantprabhakar/go-amcchain/core/rawdb"
+	"github.com/prashantprabhakar/go-amcchain/core/txpool/legacypool"
+	"github.com/prashantprabhakar/go-amcchain/core/vm"
+	"github.com/prashantprabhakar/go-amcchain/crypto"
+	"github.com/prashantprabhakar/go-amcchain/crypto/kzg4844"
+	"github.com/prashantprabhakar/go-amcchain/eth"
+	"github.com/prashantprabhakar/go-amcchain/eth/catalyst"
+	"github.com/prashantprabhakar/go-amcchain/eth/downloader"
+	"github.com/prashantprabhakar/go-amcchain/eth/ethconfig"
+	"github.com/prashantprabhakar/go-amcchain/eth/filters"
+	"github.com/prashantprabhakar/go-amcchain/eth/gasprice"
+	"github.com/prashantprabhakar/go-amcchain/eth/tracers"
+	"github.com/prashantprabhakar/go-amcchain/ethdb"
+	"github.com/prashantprabhakar/go-amcchain/ethdb/remotedb"
+	"github.com/prashantprabhakar/go-amcchain/ethstats"
+	"github.com/prashantprabhakar/go-amcchain/graphql"
+	"github.com/prashantprabhakar/go-amcchain/internal/ethapi"
+	"github.com/prashantprabhakar/go-amcchain/internal/flags"
+	"github.com/prashantprabhakar/go-amcchain/log"
+	"github.com/prashantprabhakar/go-amcchain/metrics"
+	"github.com/prashantprabhakar/go-amcchain/metrics/exp"
+	"github.com/prashantprabhakar/go-amcchain/metrics/influxdb"
+	"github.com/prashantprabhakar/go-amcchain/miner"
+	"github.com/prashantprabhakar/go-amcchain/node"
+	"github.com/prashantprabhakar/go-amcchain/p2p"
+	"github.com/prashantprabhakar/go-amcchain/p2p/enode"
+	"github.com/prashantprabhakar/go-amcchain/p2p/nat"
+	"github.com/prashantprabhakar/go-amcchain/p2p/netutil"
+	"github.com/prashantprabhakar/go-amcchain/params"
+	"github.com/prashantprabhakar/go-amcchain/rpc"
+	"github.com/prashantprabhakar/go-amcchain/trie"
+	"github.com/prashantprabhakar/go-amcchain/trie/triedb/hashdb"
+	"github.com/prashantprabhakar/go-amcchain/trie/triedb/pathdb"
 	gopsutil "github.com/shirou/gopsutil/mem"
 	"github.com/urfave/cli/v2"
 )
@@ -137,7 +137,7 @@ var (
 	}
 	MainnetFlag = &cli.BoolFlag{
 		Name:     "mainnet",
-		Usage:    "Ethereum mainnet",
+		Usage:    "AmcChain mainnet",
 		Category: flags.EthCategory,
 	}
 	GoerliFlag = &cli.BoolFlag{
@@ -1857,21 +1857,21 @@ func SetDNSDiscoveryDefaults(cfg *ethconfig.Config, genesis common.Hash) {
 	}
 }
 
-// RegisterEthService adds an Ethereum client to the stack.
+// RegisterEthService adds an AmcChain client to the stack.
 // The second return value is the full node instance.
-func RegisterEthService(stack *node.Node, cfg *ethconfig.Config) (ethapi.Backend, *eth.Ethereum) {
+func RegisterEthService(stack *node.Node, cfg *ethconfig.Config) (ethapi.Backend, *eth.AmcChain) {
 	backend, err := eth.New(stack, cfg)
 	if err != nil {
-		Fatalf("Failed to register the Ethereum service: %v", err)
+		Fatalf("Failed to register the AmcChain service: %v", err)
 	}
 	stack.RegisterAPIs(tracers.APIs(backend.APIBackend))
 	return backend.APIBackend, backend
 }
 
-// RegisterEthStatsService configures the Ethereum Stats daemon and adds it to the node.
+// RegisterEthStatsService configures the AmcChain Stats daemon and adds it to the node.
 func RegisterEthStatsService(stack *node.Node, backend ethapi.Backend, url string) {
 	if err := ethstats.New(stack, backend, backend.Engine(), url); err != nil {
-		Fatalf("Failed to register the Ethereum Stats service: %v", err)
+		Fatalf("Failed to register the AmcChain Stats service: %v", err)
 	}
 }
 
@@ -1896,7 +1896,7 @@ func RegisterFilterAPI(stack *node.Node, backend ethapi.Backend, ethcfg *ethconf
 }
 
 // RegisterFullSyncTester adds the full-sync tester service into node.
-func RegisterFullSyncTester(stack *node.Node, eth *eth.Ethereum, target common.Hash) {
+func RegisterFullSyncTester(stack *node.Node, eth *eth.AmcChain, target common.Hash) {
 	catalyst.RegisterFullSyncTester(stack, eth, target)
 	log.Info("Registered full-sync tester", "hash", target)
 }

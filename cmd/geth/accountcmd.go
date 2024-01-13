@@ -20,18 +20,18 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/ethereum/go-ethereum/accounts"
-	"github.com/ethereum/go-ethereum/accounts/keystore"
-	"github.com/ethereum/go-ethereum/cmd/utils"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/log"
+	"github.com/prashantprabhakar/go-amcchain/accounts"
+	"github.com/prashantprabhakar/go-amcchain/accounts/keystore"
+	"github.com/prashantprabhakar/go-amcchain/cmd/utils"
+	"github.com/prashantprabhakar/go-amcchain/crypto"
+	"github.com/prashantprabhakar/go-amcchain/log"
 	"github.com/urfave/cli/v2"
 )
 
 var (
 	walletCommand = &cli.Command{
 		Name:      "wallet",
-		Usage:     "Manage Ethereum presale wallets",
+		Usage:     "Manage AmcChain presale wallets",
 		ArgsUsage: "",
 		Description: `
     geth wallet import /path/to/my/presale.wallet
@@ -43,7 +43,7 @@ passwordfile as argument containing the wallet password in plaintext.`,
 			{
 
 				Name:      "import",
-				Usage:     "Import Ethereum presale wallet",
+				Usage:     "Import AmcChain presale wallet",
 				ArgsUsage: "<keyFile>",
 				Action:    importWallet,
 				Flags: []cli.Flag{

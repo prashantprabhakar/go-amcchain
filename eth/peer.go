@@ -17,14 +17,14 @@
 package eth
 
 import (
-	"github.com/ethereum/go-ethereum/eth/protocols/eth"
-	"github.com/ethereum/go-ethereum/eth/protocols/snap"
+	"github.com/prashantprabhakar/go-amcchain/eth/protocols/eth"
+	"github.com/prashantprabhakar/go-amcchain/eth/protocols/snap"
 )
 
 // ethPeerInfo represents a short summary of the `eth` sub-protocol metadata known
 // about a connected peer.
 type ethPeerInfo struct {
-	Version uint `json:"version"` // Ethereum protocol version negotiated
+	Version uint `json:"version"` // AmcChain protocol version negotiated
 }
 
 // ethPeer is a wrapper around eth.Peer to maintain a few extra metadata.

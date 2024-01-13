@@ -1,13 +1,13 @@
 # Minority split 2021-08-27 post mortem
 
-This is a post-mortem concerning the minority split that occurred on Ethereum mainnet on block [13107518](https://etherscan.io/block/13107518), at which a minority chain split occurred.
+This is a post-mortem concerning the minority split that occurred on AmcChain mainnet on block [13107518](https://etherscan.io/block/13107518), at which a minority chain split occurred.
 
 ## Timeline
 
 
 - 2021-08-17: Guido Vranken submitted a bounty report. Investigation started, root cause identified, patch variations discussed. 
 - 2021-08-18: Made public announcement over twitter about upcoming security release upcoming Tuesday. Downstream projects were also notified about the upcoming patch-release.
-- 2021-08-24: Released [v1.10.8](https://github.com/ethereum/go-ethereum/releases/tag/v1.10.8) containing the fix on Tuesday morning (CET). Erigon released [v2021.08.04](https://github.com/ledgerwatch/erigon/releases/tag/v2021.08.04).
+- 2021-08-24: Released [v1.10.8](https://github.com/prashantprabhakar/go-amcchain/releases/tag/v1.10.8) containing the fix on Tuesday morning (CET). Erigon released [v2021.08.04](https://github.com/ledgerwatch/erigon/releases/tag/v2021.08.04).
 - 2021-08-27: At 12:50:07 UTC, issue exploited. Analysis started roughly 30m later, 
 
 
@@ -62,7 +62,7 @@ Since we had merged the removal of `ETH65`, if the entire network were to upgrad
 
 - Announce an upcoming security release on Tuesday (August 24th), via Twitter and official channels, plus reach out to downstream projects.
 - Temporarily revert the `ETH65`-removal.
-- Place the fix into the PR optimizing the jumpdest analysis [233381](https://github.com/ethereum/go-ethereum/pull/23381). 
+- Place the fix into the PR optimizing the jumpdest analysis [233381](https://github.com/prashantprabhakar/go-amcchain/pull/23381). 
 - After 4-8 weeks, release details about the vulnerability. 
 
 
@@ -89,7 +89,7 @@ The blocks on the 'bad' chain were investigated, and Tim Beiko reached out to th
 
 The geth-team have an official policy regarding [vulnerability disclosure](https://geth.ethereum.org/docs/vulnerabilities/vulnerabilities). 
 
-> The primary goal for the Geth team is the health of the Ethereum network as a whole, and the decision whether or not to publish details about a serious vulnerability boils down to minimizing the risk and/or impact of discovery and exploitation.
+> The primary goal for the Geth team is the health of the AmcChain network as a whole, and the decision whether or not to publish details about a serious vulnerability boils down to minimizing the risk and/or impact of discovery and exploitation.
 
 In this case, it was decided that public pre-announce + patch would likely lead to sufficient update-window for a critical mass of nodes/miners to upgrade in time before it could be exploited. In hindsight, this was a dangerous decision, and it's unlikely that the same decision would be reached were a similar incident to happen again. 
 

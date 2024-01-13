@@ -19,22 +19,22 @@ package simulated
 import (
 	"time"
 
-	"github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/eth"
-	"github.com/ethereum/go-ethereum/eth/catalyst"
-	"github.com/ethereum/go-ethereum/eth/downloader"
-	"github.com/ethereum/go-ethereum/eth/ethconfig"
-	"github.com/ethereum/go-ethereum/eth/filters"
-	"github.com/ethereum/go-ethereum/ethclient"
-	"github.com/ethereum/go-ethereum/node"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rpc"
+	ethereum "github.com/prashantprabhakar/go-amcchain"
+	"github.com/prashantprabhakar/go-amcchain/common"
+	"github.com/prashantprabhakar/go-amcchain/core"
+	"github.com/prashantprabhakar/go-amcchain/eth"
+	"github.com/prashantprabhakar/go-amcchain/eth/catalyst"
+	"github.com/prashantprabhakar/go-amcchain/eth/downloader"
+	"github.com/prashantprabhakar/go-amcchain/eth/ethconfig"
+	"github.com/prashantprabhakar/go-amcchain/eth/filters"
+	"github.com/prashantprabhakar/go-amcchain/ethclient"
+	"github.com/prashantprabhakar/go-amcchain/node"
+	"github.com/prashantprabhakar/go-amcchain/p2p"
+	"github.com/prashantprabhakar/go-amcchain/params"
+	"github.com/prashantprabhakar/go-amcchain/rpc"
 )
 
-// Client exposes the methods provided by the Ethereum RPC client.
+// Client exposes the methods provided by the AmcChain RPC client.
 type Client interface {
 	ethereum.BlockNumberReader
 	ethereum.ChainReader
@@ -59,9 +59,9 @@ type simClient struct {
 }
 
 // Backend is a simulated blockchain. You can use it to test your contracts or
-// other code that interacts with the Ethereum chain.
+// other code that interacts with the AmcChain chain.
 type Backend struct {
-	eth    *eth.Ethereum
+	eth    *eth.AmcChain
 	beacon *catalyst.SimulatedBeacon
 	client simClient
 }
@@ -71,7 +71,7 @@ type Backend struct {
 //
 // A simulated backend always uses chainID 1337.
 func NewBackend(alloc core.GenesisAlloc, options ...func(nodeConf *node.Config, ethConf *ethconfig.Config)) *Backend {
-	// Create the default configurations for the outer node shell and the Ethereum
+	// Create the default configurations for the outer node shell and the AmcChain
 	// service to mutate with the options afterwards
 	nodeConf := node.DefaultConfig
 	nodeConf.DataDir = ""
@@ -89,7 +89,7 @@ func NewBackend(alloc core.GenesisAlloc, options ...func(nodeConf *node.Config, 
 	for _, option := range options {
 		option(&nodeConf, &ethConf)
 	}
-	// Assemble the Ethereum stack to run the chain with
+	// Assemble the AmcChain stack to run the chain with
 	stack, err := node.New(&nodeConf)
 	if err != nil {
 		panic(err) // this should never happen

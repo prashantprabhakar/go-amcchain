@@ -2409,7 +2409,7 @@ var isJson = function (str) {
 };
 
 /**
- * Returns true if given string is a valid Ethereum block header bloom.
+ * Returns true if given string is a valid AmcChain block header bloom.
  *
  * @method isBloom
  * @param {String} hex encoded bloom filter
@@ -5880,7 +5880,7 @@ module.exports = Shh;
  * @author Alex Beregszaszi <alex@rtfs.hu>
  * @date 2016
  *
- * Reference: https://github.com/ethereum/go-ethereum/blob/swarm/internal/web3ext/web3ext.go#L33
+ * Reference: https://github.com/prashantprabhakar/go-amcchain/blob/swarm/internal/web3ext/web3ext.go#L33
  */
 
 "use strict";

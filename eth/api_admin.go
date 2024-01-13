@@ -24,19 +24,19 @@ import (
 	"os"
 	"strings"
 
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/prashantprabhakar/go-amcchain/core"
+	"github.com/prashantprabhakar/go-amcchain/core/types"
+	"github.com/prashantprabhakar/go-amcchain/rlp"
 )
 
-// AdminAPI is the collection of Ethereum full node related APIs for node
+// AdminAPI is the collection of AmcChain full node related APIs for node
 // administration.
 type AdminAPI struct {
-	eth *Ethereum
+	eth *AmcChain
 }
 
 // NewAdminAPI creates a new instance of AdminAPI.
-func NewAdminAPI(eth *Ethereum) *AdminAPI {
+func NewAdminAPI(eth *AmcChain) *AdminAPI {
 	return &AdminAPI{eth: eth}
 }
 

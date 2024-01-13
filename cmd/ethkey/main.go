@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/ethereum/go-ethereum/internal/flags"
+	"github.com/prashantprabhakar/go-amcchain/internal/flags"
 	"github.com/urfave/cli/v2"
 )
 
@@ -31,7 +31,7 @@ const (
 var app *cli.App
 
 func init() {
-	app = flags.NewApp("Ethereum key manager")
+	app = flags.NewApp("AmcChain key manager")
 	app.Commands = []*cli.Command{
 		commandGenerate,
 		commandInspect,

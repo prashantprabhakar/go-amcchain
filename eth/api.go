@@ -17,17 +17,17 @@
 package eth
 
 import (
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
+	"github.com/prashantprabhakar/go-amcchain/common"
+	"github.com/prashantprabhakar/go-amcchain/common/hexutil"
 )
 
-// EthereumAPI provides an API to access Ethereum full node-related information.
+// EthereumAPI provides an API to access AmcChain full node-related information.
 type EthereumAPI struct {
-	e *Ethereum
+	e *AmcChain
 }
 
-// NewEthereumAPI creates a new Ethereum protocol API for full nodes.
-func NewEthereumAPI(e *Ethereum) *EthereumAPI {
+// NewEthereumAPI creates a new AmcChain protocol API for full nodes.
+func NewEthereumAPI(e *AmcChain) *EthereumAPI {
 	return &EthereumAPI{e}
 }
 

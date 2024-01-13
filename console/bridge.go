@@ -26,18 +26,18 @@ import (
 	"time"
 
 	"github.com/dop251/goja"
-	"github.com/ethereum/go-ethereum/accounts/scwallet"
-	"github.com/ethereum/go-ethereum/accounts/usbwallet"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/console/prompt"
-	"github.com/ethereum/go-ethereum/internal/jsre"
-	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/prashantprabhakar/go-amcchain/accounts/scwallet"
+	"github.com/prashantprabhakar/go-amcchain/accounts/usbwallet"
+	"github.com/prashantprabhakar/go-amcchain/common/hexutil"
+	"github.com/prashantprabhakar/go-amcchain/console/prompt"
+	"github.com/prashantprabhakar/go-amcchain/internal/jsre"
+	"github.com/prashantprabhakar/go-amcchain/rpc"
 )
 
 // bridge is a collection of JavaScript utility methods to bride the .js runtime
 // environment and the Go RPC connection backing the remote method calls.
 type bridge struct {
-	client   *rpc.Client         // RPC client to execute Ethereum requests through
+	client   *rpc.Client         // RPC client to execute AmcChain requests through
 	prompter prompt.UserPrompter // Input prompter to allow interactive user feedback
 	printer  io.Writer           // Output writer to serialize any display strings to
 }

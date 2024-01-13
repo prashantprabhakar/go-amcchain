@@ -25,17 +25,17 @@ import (
 	"runtime"
 	"runtime/debug"
 
-	"github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/rpc"
+	ethereum "github.com/prashantprabhakar/go-amcchain"
+	"github.com/prashantprabhakar/go-amcchain/common"
+	"github.com/prashantprabhakar/go-amcchain/common/hexutil"
+	"github.com/prashantprabhakar/go-amcchain/core/types"
+	"github.com/prashantprabhakar/go-amcchain/p2p"
+	"github.com/prashantprabhakar/go-amcchain/rpc"
 )
 
 // Client is a wrapper around rpc.Client that implements geth-specific functionality.
 //
-// If you want to use the standardized Ethereum RPC functionality, use ethclient.Client instead.
+// If you want to use the standardized AmcChain RPC functionality, use ethclient.Client instead.
 type Client struct {
 	c *rpc.Client
 }

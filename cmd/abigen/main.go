@@ -24,12 +24,12 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/ethereum/go-ethereum/cmd/utils"
-	"github.com/ethereum/go-ethereum/common/compiler"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/internal/flags"
-	"github.com/ethereum/go-ethereum/log"
+	"github.com/prashantprabhakar/go-amcchain/accounts/abi/bind"
+	"github.com/prashantprabhakar/go-amcchain/cmd/utils"
+	"github.com/prashantprabhakar/go-amcchain/common/compiler"
+	"github.com/prashantprabhakar/go-amcchain/crypto"
+	"github.com/prashantprabhakar/go-amcchain/internal/flags"
+	"github.com/prashantprabhakar/go-amcchain/log"
 	"github.com/urfave/cli/v2"
 )
 
@@ -37,11 +37,11 @@ var (
 	// Flags needed by abigen
 	abiFlag = &cli.StringFlag{
 		Name:  "abi",
-		Usage: "Path to the Ethereum contract ABI json to bind, - for STDIN",
+		Usage: "Path to the AmcChain contract ABI json to bind, - for STDIN",
 	}
 	binFlag = &cli.StringFlag{
 		Name:  "bin",
-		Usage: "Path to the Ethereum contract bytecode (generate deploy method)",
+		Usage: "Path to the AmcChain contract bytecode (generate deploy method)",
 	}
 	typeFlag = &cli.StringFlag{
 		Name:  "type",
@@ -74,7 +74,7 @@ var (
 	}
 )
 
-var app = flags.NewApp("Ethereum ABI wrapper code generator")
+var app = flags.NewApp("AmcChain ABI wrapper code generator")
 
 func init() {
 	app.Name = "abigen"

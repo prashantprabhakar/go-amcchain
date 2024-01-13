@@ -25,8 +25,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/prashantprabhakar/go-amcchain/common"
+	"github.com/prashantprabhakar/go-amcchain/crypto"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -226,42 +226,42 @@ func TestEventTupleUnpack(t *testing.T) {
 		&EventTransfer{Value: bigintExpected},
 		jsonEventTransfer,
 		"",
-		"Can unpack ERC20 Transfer event into structure",
+		"Can unpack AMCT20 Transfer event into structure",
 	}, {
 		transferData1,
 		&[]interface{}{&bigint},
 		&[]interface{}{&bigintExpected},
 		jsonEventTransfer,
 		"",
-		"Can unpack ERC20 Transfer event into slice",
+		"Can unpack AMCT20 Transfer event into slice",
 	}, {
 		transferData1,
 		&EventTransferWithTag{},
 		&EventTransferWithTag{Value1: bigintExpected},
 		jsonEventTransfer,
 		"",
-		"Can unpack ERC20 Transfer event into structure with abi: tag",
+		"Can unpack AMCT20 Transfer event into structure with abi: tag",
 	}, {
 		transferData1,
 		&BadEventTransferWithDuplicatedTag{},
 		&BadEventTransferWithDuplicatedTag{},
 		jsonEventTransfer,
 		"struct: abi tag in 'Value2' already mapped",
-		"Can not unpack ERC20 Transfer event with duplicated abi tag",
+		"Can not unpack AMCT20 Transfer event with duplicated abi tag",
 	}, {
 		transferData1,
 		&BadEventTransferWithSameFieldAndTag{},
 		&BadEventTransferWithSameFieldAndTag{},
 		jsonEventTransfer,
 		"abi: multiple variables maps to the same abi field 'value'",
-		"Can not unpack ERC20 Transfer event with a field and a tag mapping to the same abi variable",
+		"Can not unpack AMCT20 Transfer event with a field and a tag mapping to the same abi variable",
 	}, {
 		transferData1,
 		&BadEventTransferWithEmptyTag{},
 		&BadEventTransferWithEmptyTag{},
 		jsonEventTransfer,
 		"struct: abi tag in 'Value' is empty",
-		"Can not unpack ERC20 Transfer event with an empty tag",
+		"Can not unpack AMCT20 Transfer event with an empty tag",
 	}, {
 		pledgeData1,
 		&EventPledge{},

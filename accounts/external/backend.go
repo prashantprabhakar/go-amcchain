@@ -22,15 +22,15 @@ import (
 	"math/big"
 	"sync"
 
-	"github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/accounts"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/event"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/rpc"
-	"github.com/ethereum/go-ethereum/signer/core/apitypes"
+	ethereum "github.com/prashantprabhakar/go-amcchain"
+	"github.com/prashantprabhakar/go-amcchain/accounts"
+	"github.com/prashantprabhakar/go-amcchain/common"
+	"github.com/prashantprabhakar/go-amcchain/common/hexutil"
+	"github.com/prashantprabhakar/go-amcchain/core/types"
+	"github.com/prashantprabhakar/go-amcchain/event"
+	"github.com/prashantprabhakar/go-amcchain/log"
+	"github.com/prashantprabhakar/go-amcchain/rpc"
+	"github.com/prashantprabhakar/go-amcchain/signer/core/apitypes"
 )
 
 type ExternalBackend struct {
@@ -182,7 +182,7 @@ func (api *ExternalSigner) SignText(account accounts.Account, text []byte) ([]by
 	if signature[64] == 27 || signature[64] == 28 {
 		// If clef is used as a backend, it may already have transformed
 		// the signature to ethereum-type signature.
-		signature[64] -= 27 // Transform V from Ethereum-legacy to 0/1
+		signature[64] -= 27 // Transform V from AmcChain-legacy to 0/1
 	}
 	return signature, nil
 }

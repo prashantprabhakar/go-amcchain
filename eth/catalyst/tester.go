@@ -20,11 +20,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/eth"
-	"github.com/ethereum/go-ethereum/eth/downloader"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/node"
+	"github.com/prashantprabhakar/go-amcchain/common"
+	"github.com/prashantprabhakar/go-amcchain/eth"
+	"github.com/prashantprabhakar/go-amcchain/eth/downloader"
+	"github.com/prashantprabhakar/go-amcchain/log"
+	"github.com/prashantprabhakar/go-amcchain/node"
 )
 
 // FullSyncTester is an auxiliary service that allows Geth to perform full sync
@@ -35,7 +35,7 @@ import (
 // post-merge, but only for full-sync.
 type FullSyncTester struct {
 	stack   *node.Node
-	backend *eth.Ethereum
+	backend *eth.AmcChain
 	target  common.Hash
 	closed  chan struct{}
 	wg      sync.WaitGroup
@@ -43,7 +43,7 @@ type FullSyncTester struct {
 
 // RegisterFullSyncTester registers the full-sync tester service into the node
 // stack for launching and stopping the service controlled by node.
-func RegisterFullSyncTester(stack *node.Node, backend *eth.Ethereum, target common.Hash) (*FullSyncTester, error) {
+func RegisterFullSyncTester(stack *node.Node, backend *eth.AmcChain, target common.Hash) (*FullSyncTester, error) {
 	cl := &FullSyncTester{
 		stack:   stack,
 		backend: backend,

@@ -25,11 +25,11 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/ethereum/go-ethereum/accounts/keystore"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/console/prompt"
-	"github.com/ethereum/go-ethereum/p2p/dnsdisc"
-	"github.com/ethereum/go-ethereum/p2p/enode"
+	"github.com/prashantprabhakar/go-amcchain/accounts/keystore"
+	"github.com/prashantprabhakar/go-amcchain/common"
+	"github.com/prashantprabhakar/go-amcchain/console/prompt"
+	"github.com/prashantprabhakar/go-amcchain/p2p/dnsdisc"
+	"github.com/prashantprabhakar/go-amcchain/p2p/enode"
 	"github.com/urfave/cli/v2"
 )
 
@@ -251,7 +251,7 @@ func dnsNukeRoute53(ctx *cli.Context) error {
 	return client.deleteDomain(ctx.Args().First())
 }
 
-// loadSigningKey loads a private key in Ethereum keystore format.
+// loadSigningKey loads a private key in AmcChain keystore format.
 func loadSigningKey(keyfile string) *ecdsa.PrivateKey {
 	keyjson, err := os.ReadFile(keyfile)
 	if err != nil {

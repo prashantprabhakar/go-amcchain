@@ -23,10 +23,10 @@ import (
 	"runtime/debug"
 	"strings"
 
-	"github.com/ethereum/go-ethereum/params"
+	"github.com/prashantprabhakar/go-amcchain/params"
 )
 
-const ourPath = "github.com/ethereum/go-ethereum" // Path to our module
+const ourPath = "github.com/prashantprabhakar/go-amcchain" // Path to our module
 
 // These variables are set at build-time by the linker when the build is
 // done by build/ci.go.
@@ -54,7 +54,7 @@ func VCS() (VCSInfo, bool) {
 }
 
 // ClientName creates a software name/version identifier according to common
-// conventions in the Ethereum p2p network.
+// conventions in the AmcChain p2p network.
 func ClientName(clientIdentifier string) string {
 	git, _ := VCS()
 	return fmt.Sprintf("%s/v%v/%v-%v/%v",

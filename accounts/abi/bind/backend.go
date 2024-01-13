@@ -21,9 +21,9 @@ import (
 	"errors"
 	"math/big"
 
-	"github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
+	ethereum "github.com/prashantprabhakar/go-amcchain"
+	"github.com/prashantprabhakar/go-amcchain/common"
+	"github.com/prashantprabhakar/go-amcchain/core/types"
 )
 
 var (
@@ -52,7 +52,7 @@ type ContractCaller interface {
 	// between contract internal errors and the local chain being out of sync.
 	CodeAt(ctx context.Context, contract common.Address, blockNumber *big.Int) ([]byte, error)
 
-	// CallContract executes an Ethereum contract call with the specified data as the
+	// CallContract executes an AmcChain contract call with the specified data as the
 	// input.
 	CallContract(ctx context.Context, call ethereum.CallMsg, blockNumber *big.Int) ([]byte, error)
 }
@@ -64,7 +64,7 @@ type PendingContractCaller interface {
 	// PendingCodeAt returns the code of the given account in the pending state.
 	PendingCodeAt(ctx context.Context, contract common.Address) ([]byte, error)
 
-	// PendingCallContract executes an Ethereum contract call against the pending state.
+	// PendingCallContract executes an AmcChain contract call against the pending state.
 	PendingCallContract(ctx context.Context, call ethereum.CallMsg) ([]byte, error)
 }
 
@@ -75,7 +75,7 @@ type BlockHashContractCaller interface {
 	// CodeAtHash returns the code of the given account in the state at the specified block hash.
 	CodeAtHash(ctx context.Context, contract common.Address, blockHash common.Hash) ([]byte, error)
 
-	// CallContractAtHash executes an Ethereum contract call against the state at the specified block hash.
+	// CallContractAtHash executes an AmcChain contract call against the state at the specified block hash.
 	CallContractAtHash(ctx context.Context, call ethereum.CallMsg, blockHash common.Hash) ([]byte, error)
 }
 

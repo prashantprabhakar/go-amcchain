@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
 
-// Package types contains data types related to Ethereum consensus.
+// Package types contains data types related to AmcChain consensus.
 package types
 
 import (
@@ -26,9 +26,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/prashantprabhakar/go-amcchain/common"
+	"github.com/prashantprabhakar/go-amcchain/common/hexutil"
+	"github.com/prashantprabhakar/go-amcchain/rlp"
 )
 
 // A BlockNonce is a 64-bit hash which proves (combined with the
@@ -61,7 +61,7 @@ func (n *BlockNonce) UnmarshalText(input []byte) error {
 //go:generate go run github.com/fjl/gencodec -type Header -field-override headerMarshaling -out gen_header_json.go
 //go:generate go run ../../rlp/rlpgen -type Header -out gen_header_rlp.go
 
-// Header represents a block header in the Ethereum blockchain.
+// Header represents a block header in the AmcChain blockchain.
 type Header struct {
 	ParentHash  common.Hash    `json:"parentHash"       gencodec:"required"`
 	UncleHash   common.Hash    `json:"sha3Uncles"       gencodec:"required"`
@@ -173,7 +173,7 @@ type Body struct {
 	Withdrawals  []*Withdrawal `rlp:"optional"`
 }
 
-// Block represents an Ethereum block.
+// Block represents an AmcChain block.
 //
 // Note the Block type tries to be 'immutable', and contains certain caches that rely
 // on that. The rules around block immutability are as follows:

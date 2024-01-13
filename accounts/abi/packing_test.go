@@ -19,7 +19,7 @@ package abi
 import (
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/common"
+	"github.com/prashantprabhakar/go-amcchain/common"
 )
 
 type packUnpackTest struct {
@@ -676,7 +676,7 @@ var packUnpackTests = []packUnpackTest{
 			"476f2d657468657265756d000000000000000000000000000000000000000000" +
 			"0000000000000000000000000000000000000000000000000000000000000008" +
 			"457468657265756d000000000000000000000000000000000000000000000000",
-		unpacked: [4]string{"Hello", "World", "Go-ethereum", "Ethereum"},
+		unpacked: [4]string{"Hello", "World", "Go-ethereum", "AmcChain"},
 	},
 	{
 		def: `[{"type": "string[]"}]`,
@@ -688,7 +688,7 @@ var packUnpackTests = []packUnpackTest{
 			"457468657265756d000000000000000000000000000000000000000000000000" +
 			"000000000000000000000000000000000000000000000000000000000000000b" +
 			"676f2d657468657265756d000000000000000000000000000000000000000000",
-		unpacked: []string{"Ethereum", "go-ethereum"},
+		unpacked: []string{"AmcChain", "go-ethereum"},
 	},
 	{
 		def: `[{"type": "bytes[]"}]`,

@@ -20,9 +20,9 @@ package ethash
 import (
 	"time"
 
-	"github.com/ethereum/go-ethereum/consensus"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/prashantprabhakar/go-amcchain/consensus"
+	"github.com/prashantprabhakar/go-amcchain/core/types"
+	"github.com/prashantprabhakar/go-amcchain/rpc"
 )
 
 // Ethash is a consensus engine based on proof-of-work implementing the ethash
@@ -34,7 +34,7 @@ type Ethash struct {
 }
 
 // NewFaker creates an ethash consensus engine with a fake PoW scheme that accepts
-// all blocks' seal as valid, though they still have to conform to the Ethereum
+// all blocks' seal as valid, though they still have to conform to the AmcChain
 // consensus rules.
 func NewFaker() *Ethash {
 	return new(Ethash)
@@ -42,7 +42,7 @@ func NewFaker() *Ethash {
 
 // NewFakeFailer creates a ethash consensus engine with a fake PoW scheme that
 // accepts all blocks as valid apart from the single one specified, though they
-// still have to conform to the Ethereum consensus rules.
+// still have to conform to the AmcChain consensus rules.
 func NewFakeFailer(fail uint64) *Ethash {
 	return &Ethash{
 		fakeFail: &fail,
@@ -51,7 +51,7 @@ func NewFakeFailer(fail uint64) *Ethash {
 
 // NewFakeDelayer creates a ethash consensus engine with a fake PoW scheme that
 // accepts all blocks as valid, but delays verifications by some time, though
-// they still have to conform to the Ethereum consensus rules.
+// they still have to conform to the AmcChain consensus rules.
 func NewFakeDelayer(delay time.Duration) *Ethash {
 	return &Ethash{
 		fakeDelay: &delay,

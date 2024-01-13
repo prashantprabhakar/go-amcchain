@@ -23,14 +23,14 @@ import (
 	"fmt"
 	"mime"
 
-	"github.com/ethereum/go-ethereum/accounts"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/consensus/clique"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/signer/core/apitypes"
+	"github.com/prashantprabhakar/go-amcchain/accounts"
+	"github.com/prashantprabhakar/go-amcchain/common"
+	"github.com/prashantprabhakar/go-amcchain/common/hexutil"
+	"github.com/prashantprabhakar/go-amcchain/consensus/clique"
+	"github.com/prashantprabhakar/go-amcchain/core/types"
+	"github.com/prashantprabhakar/go-amcchain/crypto"
+	"github.com/prashantprabhakar/go-amcchain/rlp"
+	"github.com/prashantprabhakar/go-amcchain/signer/core/apitypes"
 )
 
 // sign receives a request and produces a signature
@@ -96,7 +96,7 @@ func (api *SignerAPI) SignData(ctx context.Context, contentType string, addr com
 func (api *SignerAPI) determineSignatureFormat(ctx context.Context, contentType string, addr common.MixedcaseAddress, data interface{}) (*SignDataRequest, bool, error) {
 	var (
 		req          *SignDataRequest
-		useEthereumV = true // Default to use V = 27 or 28, the legacy Ethereum format
+		useEthereumV = true // Default to use V = 27 or 28, the legacy AmcChain format
 	)
 	mediaType, _, err := mime.ParseMediaType(contentType)
 	if err != nil {
@@ -135,7 +135,7 @@ func (api *SignerAPI) determineSignatureFormat(ctx context.Context, contentType 
 		}
 		req = &SignDataRequest{ContentType: mediaType, Rawdata: []byte(msg), Messages: messages, Hash: sighash}
 	case apitypes.ApplicationClique.Mime:
-		// Clique is the Ethereum PoA standard
+		// Clique is the AmcChain PoA standard
 		cliqueData, err := fromHex(data)
 		if err != nil {
 			return nil, useEthereumV, err
@@ -172,7 +172,7 @@ func (api *SignerAPI) determineSignatureFormat(ctx context.Context, contentType 
 			return nil, useEthereumV, err
 		}
 	default: // also case TextPlain.Mime:
-		// Calculates an Ethereum ECDSA signature for:
+		// Calculates an AmcChain ECDSA signature for:
 		// hash = keccak256("\x19Ethereum Signed Message:\n${message length}${message}")
 		// We expect input to be a hex-encoded string
 		textData, err := fromHex(data)
@@ -302,12 +302,12 @@ func (api *SignerAPI) EcRecover(ctx context.Context, data hexutil.Bytes, sig hex
 	// Note, the signature must conform to the secp256k1 curve R, S and V values, where
 	// the V value must be 27 or 28 for legacy reasons.
 	//
-	// https://github.com/ethereum/go-ethereum/wiki/Management-APIs#personal_ecRecover
+	// https://github.com/prashantprabhakar/go-amcchain/wiki/Management-APIs#personal_ecRecover
 	if len(sig) != 65 {
 		return common.Address{}, errors.New("signature must be 65 bytes long")
 	}
 	if sig[64] != 27 && sig[64] != 28 {
-		return common.Address{}, errors.New("invalid Ethereum signature (V is not 27 or 28)")
+		return common.Address{}, errors.New("invalid AmcChain signature (V is not 27 or 28)")
 	}
 	sig[64] -= 27 // Transform yellow paper V from 27/28 to 0/1
 	hash := accounts.TextHash(data)

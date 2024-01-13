@@ -23,14 +23,14 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-ethereum/beacon/engine"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/eth"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/node"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/prashantprabhakar/go-amcchain/beacon/engine"
+	"github.com/prashantprabhakar/go-amcchain/common"
+	"github.com/prashantprabhakar/go-amcchain/core/types"
+	"github.com/prashantprabhakar/go-amcchain/eth"
+	"github.com/prashantprabhakar/go-amcchain/log"
+	"github.com/prashantprabhakar/go-amcchain/node"
+	"github.com/prashantprabhakar/go-amcchain/params"
+	"github.com/prashantprabhakar/go-amcchain/rpc"
 )
 
 const devEpochLength = 32
@@ -70,7 +70,7 @@ func (w *withdrawalQueue) gatherPending(maxCount int) []*types.Withdrawal {
 
 type SimulatedBeacon struct {
 	shutdownCh  chan struct{}
-	eth         *eth.Ethereum
+	eth         *eth.AmcChain
 	period      uint64
 	withdrawals withdrawalQueue
 
@@ -87,7 +87,7 @@ type SimulatedBeacon struct {
 //
 //   - If period is set to 0, a block is produced on every transaction.
 //     via Commit, Fork and AdjustTime.
-func NewSimulatedBeacon(period uint64, eth *eth.Ethereum) (*SimulatedBeacon, error) {
+func NewSimulatedBeacon(period uint64, eth *eth.AmcChain) (*SimulatedBeacon, error) {
 	block := eth.BlockChain().CurrentBlock()
 	current := engine.ForkchoiceStateV1{
 		HeadBlockHash:      block.Hash(),
