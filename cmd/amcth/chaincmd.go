@@ -134,7 +134,7 @@ be gzipped.`,
 		}, utils.DatabaseFlags),
 		Description: `
 The import-preimages command imports hash preimages from an RLP encoded stream.
-It's deprecated, please use "geth db import" instead.
+It's deprecated, please use "amcth db import" instead.
 `,
 	}
 

@@ -37,8 +37,8 @@ type testgeth struct {
 }
 
 func init() {
-	// Run the app if we've been exec'd as "geth-test" in runGeth.
-	reexec.Register("geth-test", func() {
+	// Run the app if we've been exec'd as "amcth-test" in runGeth.
+	reexec.Register("amcth-test", func() {
 		if err := app.Run(os.Args); err != nil {
 			fmt.Fprintln(os.Stderr, err)
 			os.Exit(1)
@@ -57,14 +57,14 @@ func TestMain(m *testing.M) {
 
 func initGeth(t *testing.T) string {
 	args := []string{"--networkid=42", "init", "./testdata/clique.json"}
-	t.Logf("Initializing geth: %v ", args)
+	t.Logf("Initializing amcth: %v ", args)
 	g := runGeth(t, args...)
 	datadir := g.Datadir
 	g.WaitExit()
 	return datadir
 }
 
-// spawns geth with the given command line args. If the args don't set --datadir, the
+// spawns amcth with the given command line args. If the args don't set --datadir, the
 // child g gets a temporary data directory.
 func runGeth(t *testing.T, args ...string) *testgeth {
 	tt := &testgeth{}
@@ -87,9 +87,9 @@ func runGeth(t *testing.T, args ...string) *testgeth {
 		args = append([]string{"--datadir", tt.Datadir}, args...)
 	}
 
-	// Boot "geth". This actually runs the test binary but the TestMain
+	// Boot "amcth". This actually runs the test binary but the TestMain
 	// function will prevent any tests from running.
-	tt.Run("geth-test", args...)
+	tt.Run("amcth-test", args...)
 
 	return tt
 }

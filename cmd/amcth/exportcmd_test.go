@@ -25,14 +25,14 @@ import (
 	"github.com/prashantprabhakar/go-amcchain/common"
 )
 
-// TestExport does a basic test of "geth export", exporting the test-genesis.
+// TestExport does a basic test of "amcth export", exporting the test-genesis.
 func TestExport(t *testing.T) {
 	t.Parallel()
 	outfile := fmt.Sprintf("%v/testExport.out", os.TempDir())
 	defer os.Remove(outfile)
-	geth := runGeth(t, "--datadir", initGeth(t), "export", outfile)
-	geth.WaitExit()
-	if have, want := geth.ExitStatus(), 0; have != want {
+	amcth := runGeth(t, "--datadir", initGeth(t), "export", outfile)
+	amcth.WaitExit()
+	if have, want := amcth.ExitStatus(), 0; have != want {
 		t.Errorf("exit error, have %d want %d", have, want)
 	}
 	have, err := os.ReadFile(outfile)
